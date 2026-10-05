@@ -1,8 +1,8 @@
-1.	Purpose
+**1.	Purpose**
 The purpose of the dashboard is to provide managers, supervisors, and assigned personnel with a clear overview of deviations during the construction process. 
 The dashboard must enable users to view, manage, and track deviations, while also providing analysis of the current situation and assisting in trend identification.
 
-2.	Target Users
+**2.	Target Users**
 The dashboard is expected to support two main user perspectives:
 -	Manager / Supervisor:
 •	Monitor all deviations.
