@@ -75,6 +75,7 @@ Open → In Progress → Closed
 •	Deviations by assigned user
 
 ## **9.	Dashboard Structure**
+
 |                   Dashboard                   |
 |-----------------------------------------------|
 | Total | Open | In Progress | Closed | Overdue |
