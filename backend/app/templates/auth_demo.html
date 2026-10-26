@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deviation Tracker · Authentication</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='auth_demo.css') }}">
+  <script src="{{ url_for('static', filename='auth_demo.js') }}" defer></script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark" aria-hidden="true">D</span> Deviation Tracker</div><span class="badge">Local test</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">AUTHENTICATION PLAYGROUND</p><h1>Your dashboard starts here.</h1><p>Create an account, sign in, and try your session.</p></section>
+    <div id="message" class="message" role="status" aria-live="polite" hidden></div>
+    <section id="guest-panel" class="card">
+      <div class="tabs" role="tablist" aria-label="Authentication">
+        <button id="login-tab" class="tab active" role="tab" aria-selected="true" aria-controls="login-panel" type="button">Log in</button>
+        <button id="register-tab" class="tab" role="tab" aria-selected="false" aria-controls="register-panel" tabindex="-1" type="button">Create account</button>
+      </div>
+      <div id="login-panel" role="tabpanel" aria-labelledby="login-tab">
+        <h2>Welcome back</h2><p class="muted">Use the account you created here.</p>
+        <form id="login-form">
+          <label for="login-email">Email</label><input id="login-email" name="email" type="email" autocomplete="username" maxlength="255" placeholder="you@example.com" required>
+          <label for="login-password">Password</label><input id="login-password" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+          <button class="primary" type="submit">Log in <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+      <div id="register-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
+        <h2>Create your test account</h2><p class="muted">You’ll be able to log in right away.</p>
+        <form id="register-form">
+          <div class="name-grid"><div><label for="first-name">First name</label><input id="first-name" name="f_name" autocomplete="given-name" maxlength="100" required></div><div><label for="last-name">Last name</label><input id="last-name" name="l_name" autocomplete="family-name" maxlength="100" required></div></div>
+          <label for="register-email">Email</label><input id="register-email" name="email" type="email" autocomplete="username" maxlength="255" placeholder="you@example.com" required>
+          <label for="register-password">Password</label><input id="register-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="password-hint" required>
+          <p id="password-hint" class="hint">Use 8–128 characters. A phrase works well.</p>
+          <label for="confirm-password">Confirm password</label><input id="confirm-password" name="confirm_password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required>
+          <button class="primary" type="submit">Create account <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+    </section>
+    <section id="user-panel" class="card" hidden>
+      <div class="session-heading"><span class="badge signed-in">Signed in</span><button id="logout" class="secondary" type="button">Log out</button></div>
+      <h2 id="welcome"></h2><p class="muted">Your authentication session is active.</p>
+      <dl class="details"><div><dt>Email</dt><dd id="user-email"></dd></div><div><dt>Role</dt><dd id="user-role"></dd></div><div><dt>Session expires</dt><dd id="session-expiry"></dd></div></dl>
+      <button id="check-session" class="secondary full" type="button">Check my session</button>
+      <details class="password-change"><summary>Change password</summary>
+        <form id="password-form">
+          <label for="current-password">Current password</label><input id="current-password" name="current_password" type="password" autocomplete="current-password" maxlength="128" required>
+          <label for="new-password">New password</label><input id="new-password" name="new_password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required>
+          <p class="hint">Changing your password signs you out of all sessions.</p>
+          <button class="primary" type="submit">Update password</button>
+        </form>
+      </details>
+    </section>
+    <p class="footnote">Test accounts stay on this computer. Refreshing this page signs you out of the page.</p>
+  </main>
+  <footer>DEVIATION TRACKER <span>Account access · Local preview</span></footer>
+</body>
+</html>
