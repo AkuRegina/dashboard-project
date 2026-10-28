@@ -48,6 +48,9 @@ CREATE TABLE deviations (
     submitted_by INTEGER NOT NULL,
     assigned_to INTEGER,
 
+    blueprint_image_ref TEXT,
+    issue_photo_ref TEXT,
+
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (concern_type_id)
@@ -103,6 +106,9 @@ SELECT
 
     d.assigned_to,
     CONCAT(assignee.f_name, ' ', assignee.l_name) AS assigned_to_name,
+
+    d.blueprint_image_ref,
+    d.issue_photo_ref,
 
     d.created_at
 

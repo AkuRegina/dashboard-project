@@ -50,11 +50,17 @@ Main table
 - `deadline`
 - `submitted_by` - Foreign Key -> `users.user_id`
 - `assigned_to` - Foreign Key -> `users.user_id`
+- `blueprint_image_ref`
+- `issue_photo_ref`
 - `created_at`
 
 `submitted_by` stores the user who created the deviation.
 
 `assigned_to` stores the user responsible for the deviation and can be NULL.
+
+`blueprint_image_ref` stores a reference to the blueprint image showing the location of the deviation.
+
+`issue_photo_ref` stores a reference to the photo showing the actual condition.
 
 ---
 
