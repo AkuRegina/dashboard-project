@@ -8,14 +8,36 @@ reading and writing data in SharePoint and provide locally AI-assisted analysis.
 
 ## Project status
 
-The project is currently in the requirements and architecture planning stage.
-This repository contains dashboard requirements and a proposed architecture
-diagram. It does not yet contain a runnable Flutter application, Flask backend,
-database implementation, or AI component.
+The repository currently contains dashboard requirements, metrics specifications,
+a proposed architecture diagram, an initial PostgreSQL schema with sample data,
+and a Flask authentication backend with a local demo and automated tests.
+A Flutter application, deviation-management APIs, SharePoint integration, and a
+local AI component are not yet included in this branch.
 
 The architecture below is a proposal. Storage ownership, database selection,
 authentication, deployment, and the SharePoint integration approach still need
 to be agreed and validated.
+
+## Project Structure
+
+```text
+dashboard-project/
+├── backend/
+│   ├── app/
+│   │   ├── templates/
+│   │   └── static/
+│   ├── instance/
+│   └── tests/
+├── database/
+│   └── migrations/
+├── Dashboard_Analytics/
+│   ├── Week_40/
+│   ├── Week42/
+│   └── Week_42/
+└── docs/
+    ├── images/
+    └── presentations/
+```
 
 ## Purpose and expected outcome
 
