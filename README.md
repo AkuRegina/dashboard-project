@@ -20,23 +20,68 @@ to be agreed and validated.
 
 ## Project Structure
 
+Files and folders currently tracked on this branch:
+
 ```text
-dashboard-project/
-├── backend/
-│   ├── app/
-│   │   ├── templates/
-│   │   └── static/
-│   ├── instance/
-│   └── tests/
-├── database/
-│   └── migrations/
-├── Dashboard_Analytics/
-│   ├── Week_40/
-│   ├── Week42/
-│   └── Week_42/
-└── docs/
-    ├── images/
-    └── presentations/
+dashboard-project/                                # Project root
+├── backend/                                      # Flask authentication backend
+│   ├── app/                                      # Application source code
+│   │   ├── __init__.py                           # App configuration and API registration
+│   │   ├── admin.py                              # Admin account management and setup command
+│   │   ├── auth.py                               # Login, logout, user info, and password APIs
+│   │   ├── demo.py                               # Local authentication demo using SQLite
+│   │   ├── models.py                             # User and session database models
+│   │   ├── security.py                           # Password, token, role, and input checks
+│   │   ├── static/                               # Browser assets for the demo
+│   │   │   ├── auth_demo.css                     # Demo page styling
+│   │   │   └── auth_demo.js                      # Demo interactions and API requests
+│   │   ├── templates/                            # HTML page templates
+│   │   │   └── auth_demo.html                    # Authentication demo page and forms
+│   │   └── __pycache__/                          # Generated Python bytecode
+│   │       ├── __init__.cpython-314.pyc           # Cached app initialization module
+│   │       ├── admin.cpython-314.pyc              # Cached admin module
+│   │       ├── auth.cpython-314.pyc               # Cached authentication module
+│   │       ├── demo.cpython-314.pyc               # Cached demo module
+│   │       ├── models.cpython-314.pyc             # Cached database models
+│   │       └── security.cpython-314.pyc           # Cached security helpers
+│   ├── instance/                                 # Local demo data
+│   │   └── auth-demo.sqlite                      # Demo account and session database
+│   ├── tests/                                    # Automated backend tests
+│   │   ├── test_auth.py                          # Authentication and account permission tests
+│   │   ├── test_demo.py                          # Demo page and registration tests
+│   │   ├── test_postgres_auth.py                 # PostgreSQL authentication and migration tests
+│   │   └── __pycache__/                          # Generated test bytecode
+│   │       ├── test_auth.cpython-314.pyc          # Cached authentication tests
+│   │       ├── test_demo.cpython-314.pyc          # Cached demo tests
+│   │       └── test_postgres_auth.cpython-314.pyc # Cached PostgreSQL tests
+│   ├── demo-server.log                           # Demo server output log
+│   ├── demo-server-error.log                     # Demo server diagnostics log
+│   ├── requirements.txt                          # Python dependencies
+│   ├── test_postgres.py                          # PostgreSQL test runner using Docker
+│   └── README.md                                 # Backend setup, API, and test instructions
+├── database/                                     # PostgreSQL scripts and documentation
+│   ├── migrations/                               # Database structure updates
+│   │   └── 001_authentication.sql                # User role, account state, and session additions
+│   ├── schema.sql                                # Tables, relationships, constraints, and views
+│   ├── data.sql                                  # Sample data for development and demos
+│   ├── database_structutre.md                     # Database model documentation
+│   └── README.md                                 # Database setup instructions
+├── Dashboard_Analytics/                           # Dashboard requirements and metrics
+│   ├── Week_40/                                  # Initial dashboard requirements
+│   │   ├── The dashboard needs.md                # Users, fields, actions, and dashboard metrics
+│   │   └── Week40_The dashboard needs.docx        # Word version of the dashboard requirements
+│   ├── Week42/                                   # Metrics specification document
+│   │   └── Metrics Specification.pdf             # Analytics metrics and calculation rules
+│   └── Week_42/                                  # Additional metrics documentation
+│       ├── Metrics Specification                 # Placeholder metrics file
+│       └── Metrics Specification.pdf             # Duplicate metrics specification PDF
+├── docs/                                         # Architecture and presentation documents
+│   ├── images/                                   # Documentation images
+│   │   └── system-architecture.png               # Proposed system architecture diagram
+│   └── presentations/                            # Presentation slides
+│       └── dashboard_specs.pptx                  # Dashboard specifications presentation
+├── .gitignore                                    # Files and folders excluded from Git
+└── README.md                                     # Project overview, structure, and architecture
 ```
 
 ## Purpose and expected outcome
