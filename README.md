@@ -9,10 +9,14 @@ reading and writing data in SharePoint and provide locally AI-assisted analysis.
 ## Project status
 
 The repository currently contains dashboard requirements, metrics specifications,
-a proposed architecture diagram, an initial PostgreSQL schema with sample data,
-and a Flask authentication backend with a local demo and automated tests.
-A Flutter application, deviation-management APIs, SharePoint integration, and a
-local AI component are not yet included in this branch.
+a proposed architecture diagram, a Flutter Windows dashboard prototype, an initial
+PostgreSQL schema with sample data, and a Flask authentication backend with a local
+demo and automated tests.
+
+The Flutter prototype displays sample KPI cards and charts; the Deviations,
+Analytics, and Settings navigation pages are placeholders. The frontend is not yet
+connected to the backend. Deviation-management APIs, SharePoint integration, and
+a local AI component are not yet implemented in this branch.
 
 The architecture below is a proposal. Storage ownership, database selection,
 authentication, deployment, and the SharePoint integration approach still need
@@ -59,6 +63,39 @@ dashboard-project/                                # Project root
 │   ├── requirements.txt                          # Python dependencies
 │   ├── test_postgres.py                          # PostgreSQL test runner using Docker
 │   └── README.md                                 # Backend setup, API, and test instructions
+├── frontend/                                     # Flutter Windows dashboard prototype
+│   ├── lib/                                      # Dart application source code
+│   │   └── main.dart                             # Navigation, sample KPI cards, and charts
+│   ├── test/                                     # Flutter widget tests
+│   │   └── widget_test.dart                      # Dashboard rendering smoke test
+│   ├── windows/                                  # Native Windows application support
+│   │   ├── flutter/                              # Flutter build and plugin integration
+│   │   │   ├── CMakeLists.txt                    # Flutter library build configuration
+│   │   │   ├── generated_plugin_registrant.cc    # Generated plugin registration code
+│   │   │   ├── generated_plugin_registrant.h     # Generated plugin registration declarations
+│   │   │   └── generated_plugins.cmake           # Generated plugin build dependencies
+│   │   ├── runner/                               # Native window and application launcher
+│   │   │   ├── resources/                        # Windows application resources
+│   │   │   │   └── app_icon.ico                  # Application icon
+│   │   │   ├── CMakeLists.txt                    # Windows executable build configuration
+│   │   │   ├── Runner.rc                         # Windows version and icon resources
+│   │   │   ├── flutter_window.cpp                # Window implementation hosting Flutter
+│   │   │   ├── flutter_window.h                  # Flutter window declarations
+│   │   │   ├── main.cpp                          # Native Windows application entry point
+│   │   │   ├── resource.h                        # Windows resource identifiers
+│   │   │   ├── runner.exe.manifest               # Windows runtime and display configuration
+│   │   │   ├── utils.cpp                         # Console, encoding, and argument helpers
+│   │   │   ├── utils.h                           # Native utility declarations
+│   │   │   ├── win32_window.cpp                  # Base Windows window implementation
+│   │   │   └── win32_window.h                    # Base Windows window declarations
+│   │   ├── .gitignore                            # Windows build artifacts excluded from Git
+│   │   └── CMakeLists.txt                        # Windows build configuration
+│   ├── .gitignore                                # Flutter build and local files excluded from Git
+│   ├── .metadata                                 # Flutter project and migration metadata
+│   ├── analysis_options.yaml                     # Dart static analysis and lint configuration
+│   ├── pubspec.yaml                              # App metadata, SDK requirements, and dependencies
+│   ├── pubspec.lock                              # Resolved dependency versions
+│   └── README.md                                 # Flutter project setup references
 ├── database/                                     # PostgreSQL scripts and documentation
 │   ├── migrations/                               # Database structure updates
 │   │   └── 001_authentication.sql                # User role, account state, and session additions
