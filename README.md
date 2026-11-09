@@ -8,14 +8,118 @@ reading and writing data in SharePoint and provide locally AI-assisted analysis.
 
 ## Project status
 
-The project is currently in the requirements and architecture planning stage.
-This repository contains dashboard requirements and a proposed architecture
-diagram. It does not yet contain a runnable Flutter application, Flask backend,
-database implementation, or AI component.
+The repository currently contains dashboard requirements, metrics specifications,
+a proposed architecture diagram, a Flutter Windows dashboard prototype, an initial
+PostgreSQL schema with sample data, and a Flask authentication backend with a local
+demo and automated tests.
+
+The Flutter prototype displays sample KPI cards and charts; the Deviations,
+Analytics, and Settings navigation pages are placeholders. The frontend is not yet
+connected to the backend. Deviation-management APIs, SharePoint integration, and
+a local AI component are not yet implemented in this branch.
 
 The architecture below is a proposal. Storage ownership, database selection,
 authentication, deployment, and the SharePoint integration approach still need
 to be agreed and validated.
+
+## Project Structure
+
+Files and folders currently tracked on this branch:
+
+```text
+dashboard-project/                                # Project root
+├── backend/                                      # Flask authentication backend
+│   ├── app/                                      # Application source code
+│   │   ├── __init__.py                           # App configuration and API registration
+│   │   ├── admin.py                              # Admin account management and setup command
+│   │   ├── auth.py                               # Login, logout, user info, and password APIs
+│   │   ├── demo.py                               # Local authentication demo using SQLite
+│   │   ├── models.py                             # User and session database models
+│   │   ├── security.py                           # Password, token, role, and input checks
+│   │   ├── static/                               # Browser assets for the demo
+│   │   │   ├── auth_demo.css                     # Demo page styling
+│   │   │   └── auth_demo.js                      # Demo interactions and API requests
+│   │   ├── templates/                            # HTML page templates
+│   │   │   └── auth_demo.html                    # Authentication demo page and forms
+│   │   └── __pycache__/                          # Generated Python bytecode
+│   │       ├── __init__.cpython-314.pyc           # Cached app initialization module
+│   │       ├── admin.cpython-314.pyc              # Cached admin module
+│   │       ├── auth.cpython-314.pyc               # Cached authentication module
+│   │       ├── demo.cpython-314.pyc               # Cached demo module
+│   │       ├── models.cpython-314.pyc             # Cached database models
+│   │       └── security.cpython-314.pyc           # Cached security helpers
+│   ├── instance/                                 # Local demo data
+│   │   └── auth-demo.sqlite                      # Demo account and session database
+│   ├── tests/                                    # Automated backend tests
+│   │   ├── test_auth.py                          # Authentication and account permission tests
+│   │   ├── test_demo.py                          # Demo page and registration tests
+│   │   ├── test_postgres_auth.py                 # PostgreSQL authentication and migration tests
+│   │   └── __pycache__/                          # Generated test bytecode
+│   │       ├── test_auth.cpython-314.pyc          # Cached authentication tests
+│   │       ├── test_demo.cpython-314.pyc          # Cached demo tests
+│   │       └── test_postgres_auth.cpython-314.pyc # Cached PostgreSQL tests
+│   ├── demo-server.log                           # Demo server output log
+│   ├── demo-server-error.log                     # Demo server diagnostics log
+│   ├── requirements.txt                          # Python dependencies
+│   ├── test_postgres.py                          # PostgreSQL test runner using Docker
+│   └── README.md                                 # Backend setup, API, and test instructions
+├── frontend/                                     # Flutter Windows dashboard prototype
+│   ├── lib/                                      # Dart application source code
+│   │   └── main.dart                             # Navigation, sample KPI cards, and charts
+│   ├── test/                                     # Flutter widget tests
+│   │   └── widget_test.dart                      # Dashboard rendering smoke test
+│   ├── windows/                                  # Native Windows application support
+│   │   ├── flutter/                              # Flutter build and plugin integration
+│   │   │   ├── CMakeLists.txt                    # Flutter library build configuration
+│   │   │   ├── generated_plugin_registrant.cc    # Generated plugin registration code
+│   │   │   ├── generated_plugin_registrant.h     # Generated plugin registration declarations
+│   │   │   └── generated_plugins.cmake           # Generated plugin build dependencies
+│   │   ├── runner/                               # Native window and application launcher
+│   │   │   ├── resources/                        # Windows application resources
+│   │   │   │   └── app_icon.ico                  # Application icon
+│   │   │   ├── CMakeLists.txt                    # Windows executable build configuration
+│   │   │   ├── Runner.rc                         # Windows version and icon resources
+│   │   │   ├── flutter_window.cpp                # Window implementation hosting Flutter
+│   │   │   ├── flutter_window.h                  # Flutter window declarations
+│   │   │   ├── main.cpp                          # Native Windows application entry point
+│   │   │   ├── resource.h                        # Windows resource identifiers
+│   │   │   ├── runner.exe.manifest               # Windows runtime and display configuration
+│   │   │   ├── utils.cpp                         # Console, encoding, and argument helpers
+│   │   │   ├── utils.h                           # Native utility declarations
+│   │   │   ├── win32_window.cpp                  # Base Windows window implementation
+│   │   │   └── win32_window.h                    # Base Windows window declarations
+│   │   ├── .gitignore                            # Windows build artifacts excluded from Git
+│   │   └── CMakeLists.txt                        # Windows build configuration
+│   ├── .gitignore                                # Flutter build and local files excluded from Git
+│   ├── .metadata                                 # Flutter project and migration metadata
+│   ├── analysis_options.yaml                     # Dart static analysis and lint configuration
+│   ├── pubspec.yaml                              # App metadata, SDK requirements, and dependencies
+│   ├── pubspec.lock                              # Resolved dependency versions
+│   └── README.md                                 # Flutter project setup references
+├── database/                                     # PostgreSQL scripts and documentation
+│   ├── migrations/                               # Database structure updates
+│   │   └── 001_authentication.sql                # User role, account state, and session additions
+│   ├── schema.sql                                # Tables, relationships, constraints, and views
+│   ├── data.sql                                  # Sample data for development and demos
+│   ├── database_structutre.md                     # Database model documentation
+│   └── README.md                                 # Database setup instructions
+├── Dashboard_Analytics/                           # Dashboard requirements and metrics
+│   ├── Week_40/                                  # Initial dashboard requirements
+│   │   ├── The dashboard needs.md                # Users, fields, actions, and dashboard metrics
+│   │   └── Week40_The dashboard needs.docx        # Word version of the dashboard requirements
+│   ├── Week42/                                   # Metrics specification document
+│   │   └── Metrics Specification.pdf             # Analytics metrics and calculation rules
+│   └── Week_42/                                  # Additional metrics documentation
+│       ├── Metrics Specification                 # Placeholder metrics file
+│       └── Metrics Specification.pdf             # Duplicate metrics specification PDF
+├── docs/                                         # Architecture and presentation documents
+│   ├── images/                                   # Documentation images
+│   │   └── system-architecture.png               # Proposed system architecture diagram
+│   └── presentations/                            # Presentation slides
+│       └── dashboard_specs.pptx                  # Dashboard specifications presentation
+├── .gitignore                                    # Files and folders excluded from Git
+└── README.md                                     # Project overview, structure, and architecture
+```
 
 ## Purpose and expected outcome
 
