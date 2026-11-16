@@ -36,9 +36,11 @@ def create_app(config=None):
 
     from .auth import auth
     from .admin import admin, create_admin
+    from .analytics import analytics
 
     app.register_blueprint(auth)
     app.register_blueprint(admin)
+    app.register_blueprint(analytics)
     app.cli.add_command(create_admin)
 
     @app.errorhandler(HTTPException)

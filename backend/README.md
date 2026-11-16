@@ -98,7 +98,28 @@ Future Flask routes should use `@require_auth()` from `app.security`, or
 `flask.g.user`. Set `submitted_by` and comment `user_id` from this user.
 For worker access, constrain deviation queries to `assigned_to == g.user.user_id`;
 apply this to details, status changes, comments, images, and analytics as well.
-These domain endpoints are not implemented yet.
+
+### Deviation analytics
+
+These GET routes require the same bearer token as `/auth/me` and read the
+`deviation_details` view from `database/schema.sql`. Managers and administrators
+see all deviations. Worker counts include only deviations assigned to that worker.
+
+`GET /analytics/summary` returns one JSON object, for example
+`{"total_deviations":4,"open":2,"in_progress":1,"closed":1,"overdue":1}`.
+Overdue counts open or in-progress deviations with a deadline before the database's
+current date. All five counts are zero when the user has no visible deviations.
+
+The breakdown routes return a JSON array with an integer count per group.
+
+| Route | Example item | Groups and order |
+|---|---|---|
+| `/analytics/by-type` | `{"type":"Quality","count":3}` | Observed types, sorted by name. Quality includes records labeled Quality Issue. |
+| `/analytics/by-severity` | `{"severity":"Medium","count":1}` | Observed severities, sorted by name |
+| `/analytics/by-status` | `{"status":"Open","count":0}` | Open, In Progress, Closed, including zero counts |
+| `/analytics/over-time` | `{"date":"2026-10-20","count":4}` | Calendar dates with recorded creations, oldest first |
+
+Deviations without a creation timestamp are excluded from the over-time series.
 
 ## Deployment
 
